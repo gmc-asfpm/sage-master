@@ -642,6 +642,7 @@
       <?php get_template_part('templates/content', 'page'); ?>
     </div>
   </div>
+  <div>Testing edits 8/24/2020</div>
 */ ?>
 
 <?php endwhile; ?>
