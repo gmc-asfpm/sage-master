@@ -10,3 +10,8 @@ Text Domain:        sage
 License:            MIT License
 License URI:        http://opensource.org/licenses/MIT
 */
+
+.rp-landing-resources .resource-box .resource-box-right .resource-title {
+  border-bottom: 2px solid lightblue;
+  padding: 0 0 12px 0;
+}
