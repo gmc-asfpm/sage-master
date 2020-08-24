@@ -63,7 +63,7 @@ function widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
-	
+
 	/*
   register_sidebar([
     'name'          => __('Footer', 'sage'),
@@ -74,7 +74,7 @@ function widgets_init() {
     'after_title'   => '</h3>'
   ]);
   */
-  
+
   register_sidebar([
     'name'          => __('Footer Column 1', 'sage'),
     'id'            => 'sidebar-footer1',
@@ -83,7 +83,7 @@ function widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
-  
+
   register_sidebar([
     'name'          => __('Footer Column 2', 'sage'),
     'id'            => 'sidebar-footer2',
@@ -92,7 +92,7 @@ function widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
-  
+
   register_sidebar([
     'name'          => __('Footer Column 3', 'sage'),
     'id'            => 'sidebar-footer3',
@@ -101,7 +101,7 @@ function widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
-  
+
   register_sidebar([
     'name'          => __('Footer Column 4', 'sage'),
     'id'            => 'sidebar-footer4',
@@ -135,7 +135,7 @@ function display_sidebar() {
  * Theme assets
  */
 function assets() {
-  wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
+  wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), true, null);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
