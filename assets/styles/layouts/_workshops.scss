@@ -1,0 +1,36 @@
+.cal_adgenda_landing_box {
+  .ai1ec-calendar-toolbar {
+    display: none;
+  }
+  .ai1ec-pull-left {
+    display: none;
+  }
+  .ai1ec-subscribe-container {
+    display: none;
+  }
+  
+}
+.ai1ec-agenda-view.floods-agenda {
+  .ai1ec-date-title, .ai1ec-month {
+    background: $brand-light-blue;
+    border-radius: 0px;
+    border: none;
+    color: $brand-blue;
+    .ai1ec-weekday {
+      display: none;
+    }
+  }
+  .ai1ec-date-title {
+    width: 65px;
+    padding: 10px 14px;
+    margin: 8px 10px 10px 0;
+  }
+  .ai1ec-event {
+    border: 0px;
+  }
+  .ai1ec-date {
+    background: none;
+    border-top: 0px;
+    border-bottom: 1px dashed $brand-mid-blue;
+  } 
+}

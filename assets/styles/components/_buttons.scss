@@ -1,0 +1,18 @@
+button, .button, .btn, .btn-primary {
+  font-family: 'Adobe Caslon Pro', serif !important;
+  background: none !important;
+  border: 2px solid #37a4c5 !important;
+  border-radius: 0px !important;
+  font-size: 14px;
+  line-height: 14px;
+  text-align: center !important;
+  padding: 12px 15px 10px 15px !important;
+  color:  #37a4c5 !important;
+  text-decoration: none !important;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+button:hover, .button:hover, .btn:hover, .btn-primary:hover {
+  text-decoration: none !important;
+}
