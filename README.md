@@ -11,7 +11,7 @@ Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and B
 * Newsletter: [Subscribe](http://roots.io/subscribe/)
 * Forum: [https://discourse.roots.io/](https://discourse.roots.io/)
 
-## Requirements
+## Requirements, mandatory and otherwise
 
 | Prerequisite    | How to check | How to install
 | --------------- | ------------ | ------------- |
