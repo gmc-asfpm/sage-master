@@ -8,8 +8,8 @@
 
 	$searchAll = false;
 	$query = null;
-	
-	
+
+
 	// CHECK GET SHOWALL
 	if(isset($_GET['showall'])) {
 		// error_log("SHOWALL VALUE: ".$_POST['showall'], 0);
@@ -21,7 +21,7 @@
 		}
 	} else {
 	}
-	
+
 	// CHECK FOR GET QUERY
   if(isset($_GET['query']) && !empty($_GET['query'])) {
 	  // error_log("EARLY QUERY IS: ".$_GET['query']);
@@ -32,14 +32,14 @@
 			$query = $_GET['query'];
 	  }
 	}
-	
+
 	// CHECK FOR GET COLLECTION SET
   if(isset($_GET['set']) && !empty($_GET['set'])) {
     $wpTag = $_GET['set'];
   } else {
     $wpTag = false;
   }
-  
+
   /*
 	// CHECK FOR GET ADDITIONAL QUERY ?
   if(isset($_GET['set']) && !empty($_GET['set'])) {
@@ -48,9 +48,9 @@
     $wpTag = false;
   }
   */
-  
+
   //
-  
+
   // CHECK POST SHOWALL
 	if(isset($_POST['showall'])) {
 		// error_log("SHOWALL VALUE: ".$_POST['showall'], 0);
@@ -62,7 +62,7 @@
 		}
 	} else {
 	}
-  
+
 	// CHECK POST QUERY
   if(isset($_POST['query']) && !empty($_POST['query'])) {
 	  // error_log("EARLY QUERY IS: ".$_POST['query']);
@@ -97,22 +97,22 @@
 	      'wpTag' => $wpTag
 	    )
 	  );
-	  
+
 	  $query = trim(stripslashes($query) ,'"');
 	  error_log("QUERY IS: ".$query, 0);
-	  
+
 	  $searchArr = array_filter($searchArr);
 	} else {
     // NO SEARCH
     $query = null;
   }
-  
+
   if(get_field('koha_wp_tag')) {
     $koha_wpTag = get_field('koha_wp_tag');
   } else {
     unset($koha_wpTag);
   }
-  
+
   if(get_field('koha_wp_tag_array')) {
     $koha_wpTagArray = get_field('koha_wp_tag_array');
     $koha_wpTagArrayStr = "";
@@ -124,13 +124,13 @@
   } else {
     unset($koha_wpTagArrayStr);
   }
-  
+
   if(get_field('search_box_placeholder_text')) {
     $search_placeholder = get_field('search_box_placeholder_text');
   } else {
     $search_placeholder = "Enter Search Terms";
   }
-?> 
+?>
 
 <?php while (have_posts()) : the_post(); ?>
 <?php // get_template_part('templates/page', 'header'); ?>
@@ -138,7 +138,7 @@
 
 <div class="container clearfix search-header">
   <h1 class="search-heading"><?php echo get_field('page_title'); ?></h1>
-  
+
   <!-- ### -->
   <?php
     $searchTooltip = trim(get_field('search_tooltip'));
@@ -147,10 +147,10 @@
         <?php echo $searchTooltip; ?>
       </div>
       <?php
-    } 
+    }
   ?>
   <!-- ### -->
-    
+
   <?php
     $topicMenuArr = get_field('topics_menu');
     // echo "<pre>".print_r($topicMenuArr[0]['links'][0], true)."</pre>";
@@ -163,27 +163,27 @@
     }
   ?>
   <div class="search-topics-wrap">
-    
+
     <div class="col-md-9 clearfix col-centered search-form-wrap">
-      
+
       <?php
         if($isTopics) { ?>
       <div class="col-md-9 col-sm-9 clearfix left">
         <?php
         } else { ?>
-      <div class="col-md-12 col-sm-12 clearfix left">  
-        <?php  
+      <div class="col-md-12 col-sm-12 clearfix left">
+        <?php
         } ?>
-        
+
         <div class="inset">
-          
+
           <i class="fa fa-search"></i>
-          
+
           <div class="input-wrap">
             <form method="POST" id="search-form">
 	            <?php
 		            if($searchAll) {
-			          	$queryText = "";  
+			          	$queryText = "";
 		            } else {
 			            $queryText = $query;
 		            }
@@ -194,16 +194,16 @@
               <input type="hidden" name="showall" id="search-showall" value="false">
             </form>
           </div>
-          
+
           <img class="go submit-form" src="<?php echo get_template_directory_uri(); ?>/assets/images/go.svg" />
-          
+
         </div>
 
       </div>
-      
+
       <?php
         if($isTopics) { ?>
-      
+
 		      <div class="col-md-3 col-sm-3 clearfix right">
 		        <div class="inset">
 		          <a class="view-topics">View Topics</a>
@@ -212,18 +212,18 @@
 
         <?php
         } else { ?>
-        <?php  
+        <?php
         } ?>
 
     </div>
-    
+
     <div class="col-xs-12 clearfix search-view-topics">
       <div class="inset clearfix">
         <div class="close-x"></div>
-        
+
         <?php
           foreach ($topicMenuArr as $topic) { ?>
-          
+
             <div class="col-md-3">
               <?php
                 if($topic['list_title'] && !empty($topic['list_title'])) { ?>
@@ -253,14 +253,14 @@
                   } ?>
               </ul>
             </div>
-          
+
           <?php
           }
         ?>
-        
+
       </div>
     </div>
-    
+
     <div class="col-md-9 col-centered clearfix">
 	    <br />
 	    <script type="text/javascript">
@@ -279,20 +279,20 @@
 				<?php
 				} ?>
     </div>
-    
-    
+
+
   </div>
-</div> 
+</div>
 
 
 <?php
   if($query) {
-    
+
     if(!empty($searchArr)) { ?>
-    
+
       <div class="container clearfix results-list-wrap">
         <div class="col-xs-12">
-          
+
           <?php
 	          if($searchAll) { ?>
 		          <h2 class="">All Results</h2>
@@ -307,100 +307,100 @@
             foreach($searchArr as $item) { ?>
               <li>
                 <div class="clearfix">
-                  
-                  <!-- 
+
+                  <!--
                   <div class="col-md-12">
                     <a href="item?id=<?php echo $item['bibId']; ?>" class="title"><?php echo $item['title']; ?> <?php echo $item['subTitle']; ?></a>
                   </div>
                   -->
-                  
-                  
+
+
                   <?php
                     if($item['imgUrl'] && !empty($item['imgUrl'])) { ?>
-                    
+
                       <div class="col-md-3">
 	                      <?php // full-width ?>
                         <div class="full-width"><img class="max-width clearfix" src="<?php echo $item['imgUrl']; ?>" /></div>
                         <br />
                       </div>
-                    
+
                     <div class="col-md-9">
-                    <?php  
+                    <?php
                     } else { ?>
-                    
+
                     <div class="col-md-12">
                     <?php
                     }
-                    
+
                       if(trim($item['electro']) && !empty($item['electro'])) {
                         // Electronic
                         $itemUrl = $item['electro'];
                         echo '<a href="'.$itemUrl.'" class="title" target="_BLANK">'.$item['title'].' '.$item['subTitle'].'</a>';
-                        
+
                       } else {
                         $itemUrl = 'item?id='.$item['bibId'];
                         echo '<a href="'.$itemUrl.'" class="title">'.$item['title'].' '.$item['subTitle'].'</a>';
                       }
-                      
+
                       if($item['type'] && !empty($item['type']) && $item['type'] != "") {
                         $linkText = $item['type'];
                       } else {
                         $linkText = "Read More";
                       }
-                      
-                      
+
+
                     if($item['date']) {
-                    // if(true) {  
+                    // if(true) {
                     ?>
                       <p><strong>Date</strong>: <?php echo $item['date']; ?></p>
                     <?php
                     }
-                    
+
                     if($item['author']) {
-                    // if(true) {  
+                    // if(true) {
                     ?>
                       <p><strong>Author</strong>: <?php echo $item['author']; ?></p>
                     <?php
                     }
-                    
+
                     if($item['publisher']) {
-                    // if(true) {  
+                    // if(true) {
                     ?>
                       <p><strong>Publisher</strong>: <?php echo $item['publisher']; ?></p>
                     <?php
                     }
-                    
+
                     if($item['note']) {
-                    // if(false) {  
+                    // if(false) {
                     ?>
                       <p><strong>Note</strong>: <?php echo $item['note']; ?></p>
                     <?php
                     }
-                    
+
                     if($item['summary']) {
-                    // if(true) {  
+                    // if(true) {
                     ?>
                       <p><strong>Summary</strong>: <?php echo $item['summary']; ?></p>
                     <?php
                     }
-                    
+
                     // if($item['bibId']) {
-                    if(false) {  
+                    if(false) {
                     ?>
                       <p><strong>ID</strong>: <?php echo $item['bibId']; ?></p>
                     <?php
                     }
-                    
+
                     // if($item['lastUpdated']) {
-                    if(false) {  
+                    if(false) {
                     ?>
                       <p><strong>Updated</strong>: <?php echo $item['lastUpdated']; ?></p>
                     <?php
                     }
-                    
-                    
+
+
                     // if($item['topic']) {
-                    if($item['topicArr'] && !empty($item['topicArr'])) {  
+                    if($item['topicArr'] && !empty($item['topicArr'])) {
                     ?>
                       <?php
                         // echo "<pre>".print_r($item['topicArr'], true)."</pre>";
@@ -414,46 +414,46 @@
                       <p><strong>Keywords</strong>: <?php echo trim(implode(", ", $item['topicArr']), ", "); ?></p>
                     <?php
                     } ?>
-                    
-                    
+
+
                     <?php
                       if($itemUrl && !empty($itemUrl)) { ?>
                         <?php echo '<br /><a href="'.$itemUrl.'" class="button" target="_blank">'.$linkText.'</a>'; ?>
-                      <?php  
+                      <?php
                       } else { ?>
-                      <?php  
+                      <?php
                       }
                     ?>
-              
+
                   </div>
-                  
-                
+
+
                   <!-- -->
-                
+
                 </div>
               </li>
             <?php
             } ?>
           </ul>
-          
-        <?php 
+
+        <?php
           //print_r($searchArr); ?>
-          
+
         </div>
       </div>
 
-    <?php  
+    <?php
     } else { ?>
-    
+
     <div class="container clearfix">
       <div class="col-xs-12">
         <h2>No results</h2>
       </div>
     </div>
-    
+
     <?php
     }
-    
+
   } else {
 
 
@@ -463,34 +463,34 @@
 
       $count = 1;
       foreach ($topicArr as $topic) { ?>
-        
+
         <div class="container clearfix">
           <div class="col-xs-12">
             <h2 class="search-topic-title"><?php echo $topic['title']; ?></h2>
           </div>
         </div>
-        
+
         <div class="container clearfix">
           <div class="col-xs-12 search-slider-wrap">
-            
+
               <?php
                 $total = count($topic['slider_boxes']);
               ?>
               <ul class="bxslider bxslider-<?php if($count > 4) { echo 'min'; } else { echo 'max'; } ?>">
                 <?php
                   foreach ($topic['slider_boxes'] as $box) {
-                    
+
                     $boxData = koha_get_data_func(
                       array(
                         'action' => 'single',
                         'id' => $box['koha_record']
                       )
                     );
-  
+
                     if($boxData[0]['electro'] && $boxData[0]['electro'] != "") {
                       // Electronic
                       $itemUrl = $boxData[0]['electro'];
-                      
+
                       if($boxData[0]['type'] && !empty($boxData[0]['type'])) {
                         $linkText = $boxData[0]['type'];
                       } else {
@@ -499,22 +499,22 @@
                     } else {
                       $itemUrl = 'item?id='.$boxData[0]['bibId'];
                     }
-                    
+
                     // $itemUrl
                     if($box['external_link'] && !empty($box['external_link'])) {
                       $itemUrl = $box['external_link'];
                     }
-                    
+
                     // $linkText
                     if($box['link_text'] && !empty($box['link_text'])) {
                       $linkText = $box['link_text'];
                     }
                   ?>
-                  	
+
                     <li class="<?php echo $box['koha_record']; ?>">
-                    
+
                     	<a target="_blank" class="cleafix" style="display: block;" href="<?php echo $itemUrl; ?>">
-	                    	
+
                     		<?php /* onclick='window.location = "<?php echo $itemUrl; ?>"' */ ?>
                         <div class="search-slider-box">
 
@@ -541,19 +541,19 @@
                                 <?php
                                   if(strlen($boxData[0]['title']) >= 48) {
                                     $truncatedTitle = trim(substr($boxData[0]['title'], 0, 48))."...";
-                                    echo $truncatedTitle;  
+                                    echo $truncatedTitle;
                                   } else {
                                     echo $boxData[0]['title'];
                                   }
                                 ?>
-                              
+
                               <div class="subtitle">
                                 <!-- <a target="_blank" href="<?php echo $itemUrl; ?>"> -->
                                   <?php
                                     $subTitle = ucfirst($boxData[0]['subTitle']);
                                     if(strlen($subTitle) >= 120) {
                                       $truncatedCaption = trim(substr($subTitle, 0, 120))."...";
-                                      echo $truncatedCaption;  
+                                      echo $truncatedCaption;
                                     } else {
                                       echo $subTitle;
                                     }
@@ -562,13 +562,13 @@
                                 <!-- </a> -->
                               </div>
                             </div>
-                            
+
                             <div class="slider-caption">
                               <?php
                               ?>
                             </div>
-                            
-                            <div>  
+
+                            <div>
                               <?php // echo '<a href="'.$itemUrl.'" class="slider-link" target="_blank">'.$linkText.'</a>'; ?>
                               <!-- <a href="<?php echo $itemUrl; ?>" class="slider-link" target="_blank"> -->
                               <span class="slider-link">
@@ -578,11 +578,11 @@
                             </div>
                           </div>
                         </div>
-                        
+
                     	</a>
 
                     </li>
-                     
+
                   <?php
                   }
                 ?>
@@ -593,12 +593,12 @@
         $count++;
       }
     }
-  }    
+  }
 ?>
 
 <script type="text/javascript">
   jQuery(document).ready(function() {
-    
+
     jQuery('.bxslider-max').bxSlider({
       minSlides: 1,
       maxSlides: 4,
@@ -608,7 +608,7 @@
       hideControlOnEnd: true,
       breaks: [{screen:0, slides:1, pager:true},{screen:460, slides:2, pager:true},{screen:768, slides:2, pager:true},{screen:990, slides:4, pager:true}]
     });
-    
+
     jQuery('.bxslider-min').bxSlider({
       minSlides: 1,
       maxSlides: 4,
@@ -618,25 +618,25 @@
       hideControlOnEnd: true,
       breaks: [{screen:0, slides:1, pager:false},{screen:460, slides:2, pager:false},{screen:768, slides:2, pager:false},{screen:990, slides:4, pager:false}]
     });
-    
+
     jQuery("a.view-topics, .close-x").click(function() {
       jQuery(".search-topics-wrap").toggleClass("show-topics");
     });
-    
+
     jQuery(".submit-form").click(function() {
-      jQuery("#search-form").submit();  
+      jQuery("#search-form").submit();
     });
-    
+
     jQuery(".img-attr").click(function(e) {
 	    e.preventDefault();
 	    e.stopPropagation();
     })
-    
+
   });
 </script>
 
 
-<?php /*    
+<?php /*
   <div class="container clearfix">
     <div class="col-xs-12">
       <?php get_template_part('templates/content', 'page'); ?>
@@ -645,4 +645,4 @@
 */ ?>
 
 <?php endwhile; ?>
-  <div>Testing edits 8/24/2020</div>
+
