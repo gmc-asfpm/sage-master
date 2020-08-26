@@ -52,6 +52,10 @@ wp_enqueue_script (
   'sidr-js', get_template_directory_uri().'/assets/sidr/jquery.sidr.min.js', array('jquery'), null
 );
 
+wp_enqueue_style(
+  'asfpm-additional-css', get_template_directory_uri().'/assets/styles/additional.css', null, null
+);
+
 
 add_filter( 'gform_enable_password_field', '__return_true' );
 
