@@ -245,10 +245,7 @@
                   <?php
 	                } ?>
                 
-                <br />
-                
-/* line 250-360 removed */
-                
+                <br />                
                 
                 <?php
                   // http://floods.local/?plugin=all-in-one-event-calendar&controller=ai1ec_exporter_controller&action=export_events&ai1ec_post_ids=289
