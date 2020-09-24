@@ -287,7 +287,7 @@ add_action( 'init', 'download_ics', 0 );
 add_action('wp_ajax_share_event_action', 'share_event_action_callback');
 add_action('wp_ajax_nopriv_share_event_action', 'share_event_action_callback');
 function share_event_action_callback() {
-	error_log("RUNNING share_event_action", 0);
+	//error_log("RUNNING share_event_action", 0);
 	
 	$name = $_POST['name'];
 	$email = $_POST['email'];
@@ -355,19 +355,19 @@ add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
 /* GRAVITY FORMS */
 add_action( 'gform_pre_submission', 'pre_submission_func' );
 function pre_submission_func($form) {
-	error_log('gform_pre_submission', 0);
+	//error_log('gform_pre_submission', 0);
 	// error_log("gform_pre_submission FORM ID: ".$form['id'], 0);
 	
 	$form_options = get_option( 'state_mentoring_option_name' );
   $ask_a_mentor_form_id = $form_options['ask_a_mentor_form_id'];
 	
 	if($form['id'] == $ask_a_mentor_form_id) {
-		error_log("gform_pre_submission ask_a_mentor_form_id");
+		//error_log("gform_pre_submission ask_a_mentor_form_id");
 		// MATCH MENTOR ID FIELD
 		$mentorId = rgpost('input_3');
-		error_log("Mentor ID: ".$mentorId, 0);
+		//error_log("Mentor ID: ".$mentorId, 0);
 		$mentorEmail = get_field("work_email", $mentorId);
-		error_log("Mentor Email: ".$mentorEmail, 0);
+		//error_log("Mentor Email: ".$mentorEmail, 0);
 		
 		// MATCH MENTOR EMAIL FIELD
 		$_POST['input_4'] = $mentorEmail;
@@ -884,7 +884,7 @@ function gform_after_submission_action( $entry, $form ) {
 }
 
 function redirect_mentor_admin() {
-  error_log('redirect_mentor_admin');
+  //error_log('redirect_mentor_admin');
   if(!session_id()) {
     session_start();
   }
@@ -1242,7 +1242,7 @@ add_filter('acf/save_post' , 'my_save_post_twenty', 20, 1 );
 add_filter('gform_validation', 'gform_validate_action');
 function gform_validate_action($validation_result) {
   $form = $validation_result['form'];
-  error_log("Running validation: Validation: Form ID: ".$form['id'], 0);
+  //error_log("Running validation: Validation: Form ID: ".$form['id'], 0);
   
   $form_options = get_option( 'state_mentoring_option_name' );
   $mentor_form_id = $form_options['mentor_form_id'];
