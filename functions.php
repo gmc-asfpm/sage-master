@@ -282,7 +282,7 @@ function download_ics() {
 add_action( 'init', 'download_ics', 0 );
 
 
-
+/*
 // AJAX EVENT SHARE
 add_action('wp_ajax_share_event_action', 'share_event_action_callback');
 add_action('wp_ajax_nopriv_share_event_action', 'share_event_action_callback');
@@ -316,6 +316,7 @@ function share_event_action_callback() {
   echo json_encode($res);
 	wp_die();
 }
+*/
 
 /* LOGIN REDIRECT */
 /**
